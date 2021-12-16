@@ -14,44 +14,7 @@
         return $res;
     }
     $param = "";
-    $linenum = "1";
-    switch($_GET["line"]){
-        case "1":
-            $param = "1001";
-            $linenum = "1";
-            break;
-        case "2":
-            $param = "1002";
-            $linenum = "2";
-            break;
-        case "3":
-            $param = "1003";
-            $linenum = "3";
-            break;
-        case "4":
-            $param = "1004";
-            $linenum = "4";
-            break;
-        case "5":
-            $param = "1005";
-            $linenum = "5";
-            break;
-        case "6":
-            $param = "1006";
-            $linenum = "6";
-            break;
-        case "7":
-            $param = "1007";
-            $linenum = "7";
-            break;
-        case "8":
-            $param = "1008";
-            $linenum = "8";
-            break;
-        default:
-            echo '{"s":"500","errorMessage":"노선이 존재하지 않거나 지원하지 않습니다."}';
-            exit();
-    }
+    $linenum = $_GET["line"];
 
     $smss = json_decode(call("https://smss.seoulmetro.co.kr/api/3010.do", $linenum), true)["ttcVOList"];
     $res = call("https://smapp.seoulmetro.co.kr:58443/traininfo/traininfoUserMap.do", $linenum);
